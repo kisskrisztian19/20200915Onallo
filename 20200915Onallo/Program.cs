@@ -8,22 +8,31 @@ namespace _20200915Onallo
 {
     class Teglalap
     {
-        public int szamitker(int a, int b)
+        int a, b;
+        public Teglalap(int aa, int bb)
+        {
+            a = aa; b = bb;
+        }
+        public int szamitker()
         {
             return a * b;
         }
-        public int szamitter(int a, int b)
+        public int szamitter()
         { 
             return 2 * (a * b);
         }
     }
     class Kor
     {
-        private double r;
+        private int r;
 
         public Kor(int sugar) //Konstruktor
         {
-            r = sugar;
+            if (sugar < 1)
+            {
+                r = 1;
+            } else r = sugar;
+
         }
 
         public double kerulet() 
@@ -34,6 +43,10 @@ namespace _20200915Onallo
         {
            return Math.Pow(r, 2) * Math.PI;
         }
+        public void Adatok()
+        {
+            Console.WriteLine($"Sugár: {r} Terület: {terulet()} Kerület {kerulet()}");
+        }
     }
     class Program
     {
@@ -43,17 +56,17 @@ namespace _20200915Onallo
             Console.Write("A: "); int a = int.Parse(Console.ReadLine());
         Console.WriteLine();
             Console.Write("B: "); int b = int.Parse(Console.ReadLine());
-        Teglalap szamitas = new Teglalap();
+        Teglalap szamitas = new Teglalap(a, b);
 
-            Console.WriteLine($"Kerület: {szamitas.szamitker(a, b)} Terület: {szamitas.szamitter(a, b)}"); 
+            Console.WriteLine($"Kerület: {szamitas.szamitker()} Terület: {szamitas.szamitter()}"); 
         }
         static void Korszamitas()
         {
-            Kor korocske = new Kor();
-            Console.Write("Adja meg a kör sugarát: "); double r = int.Parse(Console.ReadLine());
-            korocske.r = r;
-
-            Console.WriteLine($"A kör kerülete: {korocske.kerulet()} területe: {korocske.terulet()}"); 
+            
+            Console.Write("Adja meg a kör sugarát: "); int r = int.Parse(Console.ReadLine());
+            Kor korocske = new Kor(r);
+            //korocske.r = r;
+            korocske.Adatok(); 
         }
         static void Main(string[] args)
         {
